@@ -1,10 +1,10 @@
-# Pneumonia Detection using Convolutional Neural Networks (CNN)
+Pneumonia Detection using Convolutional Neural Networks (CNN)
 
-A deep learning project that classifies chest X-ray images as **Normal** or **Pneumonia** using a custom Convolutional Neural Network (CNN) built with TensorFlow and Keras.
+A deep learning project that classifies chest X-ray images as Normal or Pneumonia using a custom Convolutional Neural Network (CNN) built with TensorFlow and Keras.
 
----
 
-## 📋 Table of Contents
+
+📋 Table of Contents
 - [Project Overview](#project-overview)
 - [Dataset](#dataset)
 - [Model Architecture](#model-architecture)
@@ -14,16 +14,12 @@ A deep learning project that classifies chest X-ray images as **Normal** or **Pn
 - [Project Structure](#project-structure)
 - [Technologies Used](#technologies-used)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
 
----
-
-## 🎯 Project Overview
+Project Overview
 
 This project implements a deep learning solution to automatically detect pneumonia from chest X-ray images. The model uses a custom CNN architecture to achieve high accuracy in binary classification tasks, helping to support medical diagnosis processes.
 
-**Key Features:**
+Key Features:
 - Custom CNN architecture for binary classification
 - Image preprocessing and normalization
 - Training, validation, and testing on large dataset
@@ -32,61 +28,59 @@ This project implements a deep learning solution to automatically detect pneumon
 
 ---
 
-## 📊 Dataset
+Dataset
 
 **Source:** Chest X-ray Images Dataset
 
-**Classes:**
+Classes:
 - **NORMAL:** Healthy chest X-rays
 - **PNEUMONIA:** X-rays showing signs of pneumonia
 
-**Data Split:**
+Data Split:
 - Training: 5,216 images
 - Validation: 16 images
 - Test: 624 images
 
-**Image Specifications:**
+Image Specifications:
 - Size: 180 × 180 RGB images
 - Format: JPG
 - Augmentation: Normalization applied during preprocessing
 
 ---
 
-## 🏗️ Model Architecture
-
-### Input Layer
+Model Architecture
+Input Layer
 - Input shape: (180, 180, 3) - 180×180 RGB images
 
-### Architecture Components
-1. **Rescaling Layer:** Normalizes pixel values to [0, 1]
-2. **Convolutional Block 1:**
+Architecture Components
+1. Rescaling Layer:Normalizes pixel values to [0, 1]
+2. Convolutional Block 1:
    - Conv2D: 32 filters, 3×3 kernel
    - MaxPooling2D: 2×2 pool size
    
-3. **Convolutional Block 2:**
+3. Convolutional Block 2:
    - Conv2D: 64 filters, 3×3 kernel
    - MaxPooling2D: 2×2 pool size
    
-4. **Convolutional Block 3:**
+4. Convolutional Block 3:
    - Conv2D: 128 filters, 3×3 kernel
    - MaxPooling2D: 2×2 pool size
 
-5. **Dense Layers:**
+5. Dense Layers:
    - Flatten layer
    - Dense: 128 neurons with ReLU activation
    - Dropout: 50% to prevent overfitting
    - Output Dense: 1 neuron with Sigmoid activation (binary classification)
+Model Summary
+- Total Parameters: 6,647,105
+- Trainable Parameters:6,647,105
+- Optimizer:Adam
+- Loss Function: Binary Crossentropy
+- Metrics: Accuracy
 
-### Model Summary
-- **Total Parameters:** 6,647,105
-- **Trainable Parameters:** 6,647,105
-- **Optimizer:** Adam
-- **Loss Function:** Binary Crossentropy
-- **Metrics:** Accuracy
 
----
 
-## 📈 Performance Metrics
+ Performance Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -96,34 +90,34 @@ This project implements a deep learning solution to automatically detect pneumon
 | Training Loss | Low |
 | Model Size | Lightweight (~25MB) |
 
----
 
-## 🛠️ Installation
+
+ Installation
 
 ### Prerequisites
 - Python 3.8 or higher
 - pip or conda package manager
 
-### Setup Instructions
+Setup Instructions
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/Sevani2005/Pneumonia_DNN_PyCharm.git
    cd Pneumonia_DNN_PyCharm
    ```
 
-2. **Create a virtual environment:**
+2. Create a virtual environment:
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install required dependencies:**
+3. Install required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-### Dependencies
+ Dependencies
 All required packages are listed in `requirements.txt`:
 - TensorFlow >= 2.10.0
 - NumPy >= 1.21.0
@@ -133,11 +127,11 @@ All required packages are listed in `requirements.txt`:
 - Matplotlib >= 3.4.0
 - Pillow >= 9.0.0
 
----
 
-## 🚀 Usage
 
-### Training the Model
+ Usage
+
+ Training the Model
 ```bash
 python main_dnn.py
 ```
@@ -149,7 +143,7 @@ This script will:
 4. Validate on the validation set
 5. Save the trained model
 
-### Testing the Model
+Testing the Model
 ```bash
 python test_tensorflow.py
 ```
@@ -158,8 +152,7 @@ This script will:
 1. Load the trained model
 2. Evaluate performance on the test set
 3. Generate classification reports and visualizations
-
-### Making Predictions
+4.  Making Predictions
 ```python
 from main_dnn import load_model, predict
 import cv2
@@ -180,9 +173,9 @@ print(f"Prediction: {result}")
 
 ---
 
-## 📁 Project Structure
+ Project Structure
 
-```
+
 Pneumonia_DNN_PyCharm/
 ├── main_dnn.py              # Main training script
 ├── test_tensorflow.py       # Testing and evaluation script
@@ -194,70 +187,34 @@ Pneumonia_DNN_PyCharm/
 
 ---
 
-## 💻 Technologies Used
+Technologies Used
 
-- **Deep Learning Framework:** TensorFlow/Keras
-- **Image Processing:** OpenCV, NumPy
-- **Data Handling:** Pandas, Numpy
-- **Visualization:** Matplotlib
-- **Machine Learning:** Scikit-learn
-- **IDE:** PyCharm
-- **Version Control:** Git/GitHub
+- Deep Learning Framework: TensorFlow/Keras
+- Image Processing: OpenCV, NumPy
+- Data Handling: Pandas, Numpy
+- Visualization: Matplotlib
+- Machine Learning:Scikit-learn
+- IDE:PyCharm
+- Version Control:Git/GitHub
 
----
+ Results & Insights
 
-## 🎓 Results & Insights
-
-### Model Performance
+Model Performance
 - The model achieves ~98% accuracy on the training set
 - Validation accuracy ranges from 94-100%
 - Test accuracy of 77-78% indicates good generalization
 
-### Key Findings
+Key Findings
 - The CNN architecture effectively captures features relevant to pneumonia detection
 - Dropout regularization helps prevent overfitting
 - Image normalization is crucial for model performance
 
-### Potential Improvements
+Potential Improvements
 - Implement data augmentation techniques for better generalization
 - Try transfer learning with pre-trained models (ResNet, VGG)
 - Experiment with ensemble methods
 - Collect more balanced datasets
 - Implement gradient-based visualization techniques (CAM, Grad-CAM)
 
----
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request with:
-- Bug fixes
-- Feature enhancements
-- Documentation improvements
-- Code optimizations
-
----
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
----
-
-## 📧 Contact
-
-For questions or suggestions, feel free to reach out!
-
-**Author:** Sevani2005  
-**GitHub:** [github.com/Sevani2005](https://github.com/Sevani2005)
-
----
-
-## ⭐ Acknowledgments
-
-- Chest X-ray Images Dataset providers
-- TensorFlow and Keras community
-- PyCharm IDE for development
-
----
-
-**Happy Learning! 🚀**
