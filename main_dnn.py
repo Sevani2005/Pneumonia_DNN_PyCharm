@@ -95,6 +95,10 @@ history = model.fit(
     epochs=epochs,
 )
 
+# ===== SAVE MODEL =====
+model.save("pneumonia_model.keras")
+print("Model saved as pneumonia_model.keras")
+
 # ===== EVALUATE ON TEST SET =====
 test_loss, test_acc = model.evaluate(test_ds)
 print("Test accuracy:", test_acc)
@@ -107,7 +111,9 @@ plt.xlabel("Epoch")
 plt.ylabel("Accuracy")
 plt.legend()
 plt.title("Training and Validation Accuracy")
-plt.show()
+# plt.show() # Commented out for automated environments if necessary
+plt.savefig("accuracy_plot.png")
+print("Accuracy plot saved as accuracy_plot.png")
 
 # ===== PREDICT ONE IMAGE =====
 def predict_single_image(img_path):
