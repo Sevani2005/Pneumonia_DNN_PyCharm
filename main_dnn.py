@@ -7,7 +7,14 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 
 # ===== PATHS =====
-data_dir = r"C:\Users\sevpr\Downloads\archive (1)\chest_xray"  # change ONLY if your chest_xray is elsewhere
+# Default local path (good for Git)
+base_path = "data" 
+
+# Fallback to your specific local path if 'data' folder doesn't exist
+if not os.path.exists(base_path):
+    base_path = r"C:\Users\sevpr\Downloads\archive (1)\chest_xray"
+
+data_dir = base_path
 
 img_size = (180, 180)
 batch_size = 32
@@ -54,7 +61,7 @@ test_ds = keras.utils.image_dataset_from_directory(
     shuffle=False,
 )
 
-# ===== PREFETCH =====
+
 AUTOTUNE = tf.data.AUTOTUNE
 train_ds = train_ds.prefetch(buffer_size=AUTOTUNE)
 val_ds = val_ds.prefetch(buffer_size=AUTOTUNE)
@@ -118,7 +125,7 @@ print("Accuracy plot saved as accuracy_plot.png")
 # ===== PREDICT ONE IMAGE =====
 def predict_single_image(img_path):
     img = image.load_img(img_path, target_size=img_size)
-    img_array = image.img_to_array(img) / 255.0
+    img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)  # shape (1, h, w, 3) [web:765][web:751]
 
     prob = model.predict(img_array)[0][0]         # sigmoid output between 0 and 1 [web:765][web:769]
@@ -126,5 +133,6 @@ def predict_single_image(img_path):
     print(f"Prediction: {label}  (prob={prob:.3f})")
 
 # change this path for ANY image you want to test
-example_path = r"C:\Users\sevpr\Downloads\archive (1)\chest_xray\chest_xray\test\NORMAL\IM-0001-0001.jpeg"
+# Example using relative path:
+example_path = os.path.join(test_dir, "NORMAL", os.listdir(os.path.join(test_dir, "NORMAL"))[0]) if os.path.exists(test_dir) else "path_to_test_image.jpg"
 predict_single_image(example_path)
