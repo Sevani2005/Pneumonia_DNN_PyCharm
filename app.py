@@ -206,9 +206,9 @@ st.markdown('<p class="subtitle">AI-Powered Radiological Assistant</p>', unsafe_
 with st.sidebar:
     st.markdown("### SYSTEM INFO")
     st.markdown("""
-    **Model:** ConvNet (CNN)
-    **Version:** 2.0.0
-    **Status:** Active
+    - **Model:** ConvNet (CNN)
+    - **Version:** 2.0.0
+    - **Status:** Active
     """)
     
     st.markdown("---")
