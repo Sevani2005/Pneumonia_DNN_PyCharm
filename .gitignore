@@ -46,6 +46,7 @@ datasets/
 
 # Model files (can be large)
 *.keras
+!pneumonia_model.keras
 *.h5
 *.pkl
 *.pth
